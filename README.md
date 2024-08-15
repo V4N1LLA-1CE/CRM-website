@@ -2,12 +2,12 @@
 
 ## Contributors
 
-Name: Austin Sofaer
-Email: asof0006@student.monash.edu
+Name: Austin Sofaer  
+Email: asof0006@student.monash.edu  
 Id: 33222150
 
-Name: Zamin Nasser
-Email: znas0005@student.monash.edu
+Name: Zamin Nasser  
+Email: znas0005@student.monash.edu  
 Id: xxx
 
 ## Link To Repo
@@ -16,7 +16,7 @@ Id: xxx
 
 ## Admin Credentials
 
-Username: xxx
+Username: xxx  
 Password: xxx
 
 ## Schema and Data Files
