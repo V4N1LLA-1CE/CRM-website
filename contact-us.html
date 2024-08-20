@@ -18,7 +18,7 @@
 
     <main class="d-flex justify-content-center align-items-center">
       <div class="d-flex justify-content-center shadow p-5 m-5 rounded-5">
-        <form class="mx-4">
+        <form class="mx-4" id="contact-form">
           <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
             <input
@@ -45,11 +45,10 @@
           <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
             <input
-              type="tel"
+              type="text"
               class="form-control"
               id="phone"
-              pattern="\d{3}-\d{3}-\d{4}"
-              placeholder="044-444-4444"
+              placeholder="Enter your phone numer"
               required
             />
           </div>
@@ -62,6 +61,7 @@
               rows="4"
               cols="20"
               name="message"
+              required
             ></textarea>
           </div>
 
@@ -75,5 +75,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <script src="js/contact-us-validation.js"></script
   </body>
 </html>
