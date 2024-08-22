@@ -3,10 +3,11 @@
 include './database/connection.php';
 
 // Create global var
-global $pdo;
+global $dbh;
 
 // Execute SQL query
-$stmt = $pdo->query("SELECT * FROM `User`");
+$stmt = $dbh->prepare("SELECT * FROM `User`");
+$stmt->execute();
 
 // Fetch and display data
 while ($row = $stmt->fetch()) {
