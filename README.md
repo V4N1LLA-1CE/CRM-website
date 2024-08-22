@@ -21,4 +21,4 @@ Password: xxx
 
 ## Schema and Data Files
 
-- xxx.sql
+- schema-data.sql

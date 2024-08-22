@@ -1,5 +1,5 @@
 CREATE TABLE `User` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT, 
   `email` varchar(255),
   `password` varchar(255),
   `first_name` varchar(255),
@@ -7,7 +7,7 @@ CREATE TABLE `User` (
 );
 
 CREATE TABLE `Project` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY NOT NULL AUTO_INCREMENT ,
   `name` varchar(255),
   `desc` varchar(255),
   `technique_required` varchar(255),
@@ -18,7 +18,7 @@ CREATE TABLE `Project` (
 );
 
 CREATE TABLE `Organisation` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255),
   `website` varchar(255),
   `desc` varchar(255),
@@ -26,7 +26,7 @@ CREATE TABLE `Organisation` (
 );
 
 CREATE TABLE `Contractor` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
   `specialisation` varchar(255),
@@ -36,7 +36,7 @@ CREATE TABLE `Contractor` (
 );
 
 CREATE TABLE `Contact_Us` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
   `phone_number` varchar(255),
@@ -51,3 +51,4 @@ ALTER TABLE `Project` ADD FOREIGN KEY (`org_id`) REFERENCES `Organisation` (`id`
 
 ALTER TABLE `Project` ADD FOREIGN KEY (`contractor_id`) REFERENCES `Contractor` (`id`);
 
+INSERT INTO `User` VALUES ("Nathan.Jims@gmail.com", "Ilovechocolatemint12", "Nathan", "Jims")
