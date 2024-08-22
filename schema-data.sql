@@ -1,61 +1,77 @@
-CREATE TABLE `User` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `email` varchar(255),
-  `password` varchar(255),
-  `first_name` varchar(255),
-  `last_name` varchar(255)
+-- Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS fit2104_a3_lab4_group10;
+
+-- Use the newly created database
+USE fit2104_a3_lab4_group10;
+
+-- Create the User table if it doesn't exist
+CREATE TABLE IF NOT EXISTS `User` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255),
+  `password` VARCHAR(255),
+  `first_name` VARCHAR(255),
+  `last_name` VARCHAR(255)
 );
 
-CREATE TABLE `Project` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(255),
-  `desc` varchar(255),
-  `technique_required` varchar(255),
-  `due_date` datetime,
-  `pmt_link` varchar(255),
-  `org_id` int,
-  `contractor_id` int
+-- Create the Project table if it doesn't exist
+CREATE TABLE IF NOT EXISTS `Project` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255),
+  `desc` VARCHAR(255),
+  `technique_required` VARCHAR(255),
+  `due_date` DATETIME,
+  `pmt_link` VARCHAR(255),
+  `org_id` INT,
+  `contractor_id` INT
 );
 
-CREATE TABLE `Organisation` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(255),
-  `website` varchar(255),
-  `desc` varchar(255),
-  `industry` varchar(255)
+-- Create the Organisation table if it doesn't exist
+CREATE TABLE IF NOT EXISTS `Organisation` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255),
+  `website` VARCHAR(255),
+  `desc` VARCHAR(255),
+  `industry` VARCHAR(255)
 );
 
-CREATE TABLE `Contractor` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255),
-  `last_name` varchar(255),
-  `specialisation` varchar(255),
-  `email` varchar(255),
-  `phone_number` varchar(255),
-  `address` varchar(255)
+-- Create the Contractor table if it doesn't exist
+CREATE TABLE IF NOT EXISTS `Contractor` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(255),
+  `last_name` VARCHAR(255),
+  `specialisation` VARCHAR(255),
+  `email` VARCHAR(255),
+  `phone_number` VARCHAR(255),
+  `address` VARCHAR(255)
 );
 
-CREATE TABLE `Contact_Us` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255),
-  `last_name` varchar(255),
-  `phone_number` varchar(255),
-  `message` varchar(255),
-  `replied` boolean,
-  `org_id` int
+-- Create the Contact_Us table if it doesn't exist
+CREATE TABLE IF NOT EXISTS `Contact_Us` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(255),
+  `last_name` VARCHAR(255),
+  `phone_number` VARCHAR(255),
+  `message` VARCHAR(255),
+  `replied` BOOLEAN,
+  `org_id` INT
 );
 
 -- Adding Foreign Key Constraints
-ALTER TABLE `Contact_Us` ADD FOREIGN KEY (`org_id`) REFERENCES `Organisation` (`id`);
-ALTER TABLE `Project` ADD FOREIGN KEY (`org_id`) REFERENCES `Organisation` (`id`);
-ALTER TABLE `Project` ADD FOREIGN KEY (`contractor_id`) REFERENCES `Contractor` (`id`);
+ALTER TABLE `Contact_Us` 
+  ADD CONSTRAINT `fk_org_id_contact_us` 
+  FOREIGN KEY (`org_id`) REFERENCES `Organisation` (`id`);
 
+ALTER TABLE `Project` 
+  ADD CONSTRAINT `fk_org_id_project` 
+  FOREIGN KEY (`org_id`) REFERENCES `Organisation` (`id`);
 
--- When inserting, omit the 'id' column to let the database auto-generate it
-INSERT INTO `User` (`email`, `password`, `first_name`, `last_name`)
-VALUES ("Nathan.Jims@gmail.com", "Ilovechocolatemint12", "Nathan", "Jims");
+ALTER TABLE `Project` 
+  ADD CONSTRAINT `fk_contractor_id_project` 
+  FOREIGN KEY (`contractor_id`) REFERENCES `Contractor` (`id`);
 
-INSERT INTO `User` (`email`, `password`, `first_name`, `last_name`)
-VALUES ("J.Wilson@gmail.com", "TedLasso2012FTW!", "John", "Wilson");
-
+-- Inserting sample data into the User table
+INSERT IGNORE INTO `User` (`email`, `password`, `first_name`, `last_name`)
+VALUES 
+  ("Nathan.Jims@gmail.com", "Ilovechocolatemint12", "Nathan", "Jims"),
+  ("J.Wilson@gmail.com", "TedLasso2012FTW!", "John", "Wilson");
 

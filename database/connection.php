@@ -1,7 +1,7 @@
 <?php
 // Database credentials
 $host = 'localhost';
-$dbname = 'demo-fit2104';
+$dbname = 'fit2104_a3_lab4_group10';
 $username = 'admin';
 $password = 'admin';
 
