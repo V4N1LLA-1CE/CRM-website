@@ -16,8 +16,11 @@ Id: 32250436
 
 ## Admin Credentials
 
-Username: xxx  
-Password: xxx
+Username: Nathan.Jims@gmail.com  
+Password: Ilovechocolatemint12
+
+Username: J.Wilson@gmail.com  
+Password: TedLasso2012FTW!
 
 ## Schema and Data Files
 
