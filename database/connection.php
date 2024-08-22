@@ -1,14 +1,10 @@
 <?php
-// Database credentials
+// Database credentials ###CHANGE HERE
 $host = 'localhost';
 $dbname = 'fit2104_a3_lab4_group10';
 $username = 'admin';
 $password = 'admin';
 
-// Create a PDO instance
+// Create a DBH instance
 global $dbh;
-$dbh= new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-
-// Close the PHP tag to ensure it's only responsible for connection logic
-?>
-
+$dbh = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
