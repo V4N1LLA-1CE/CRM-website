@@ -17,7 +17,9 @@ $rows = 3;
   <header>
     <nav class="navbar bg-dark border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
       <div class="container-fluid gap-3">
-        <img src="./assets/img/b2b-logo.svg" width="220" alt="Buiness logo" />
+        <a href="/">
+          <img src="./assets/img/b2b-logo.svg" width="220" alt="Buiness logo" />
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
