@@ -23,7 +23,7 @@ $rows = 3;
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" aria-current="page" href="#">Dashboard</a>
             <a class="nav-link" href="#">Projects</a>
@@ -32,12 +32,13 @@ $rows = 3;
             <a class="nav-link active" href="#">Users</a>
             <a class="nav-link" href="#">Contact Us</a>
           </div>
+          <a href="login.html"><button class="btn btn-danger">Logout</button></a>
         </div>
       </div>
     </nav>
   </header>
 
-  <main class="m-5 px-5 py-3 rounded-5 shadow">
+  <main class="m-5 px-5 py-3 shadow">
     <h1>Users</h1>
     <table id="userTable" class="display border">
       <thead>
