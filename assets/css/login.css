@@ -6,5 +6,10 @@ html {
   width: 100%;
 }
 
-.back-btn {
+body {
+  background-image: url("../img/rain.jpg");
+}
+
+.loginForm {
+  opacity: 0.9;
 }

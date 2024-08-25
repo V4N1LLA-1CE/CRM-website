@@ -6,6 +6,15 @@ body {
   align-items: center;
   height: 100%;
 }
+
+body {
+  background-color: #282f3e !important;
+}
+
 header {
   align-self: start;
+}
+
+a {
+  text-decoration: none !important;
 }
