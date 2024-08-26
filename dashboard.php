@@ -28,7 +28,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </button>
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link active" href="./dashboard.php">Dashboard</a>
             <a class="nav-link" href="./projects.php">Projects</a>
             <a class="nav-link" href="./contractors.php">Contractors</a>
             <a class="nav-link" href="./organisations.php">Organisations</a>

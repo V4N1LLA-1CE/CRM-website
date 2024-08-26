@@ -56,6 +56,11 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
+          <li><a href="./dashboard.php">Dashboard</a></li>
+          <li><a href="./projects.php">Projects</a></li>
+          <li><a href="./contractors.php">Contractors</a></li>
+          <li><a href="./organisations.php">Organisations</a></li>
+          <li><a href="./users.php">Users</a></li>
           <li class="dropdown">
             <a href="#"><span>Staff Portal</span>
               <i class="bi bi-chevron-down toggle-dropdown"></i></a>
