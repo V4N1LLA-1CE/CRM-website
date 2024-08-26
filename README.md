@@ -22,9 +22,9 @@ Password: Ilovechocolatemint12
 Username: J.Wilson@gmail.com  
 Password: TedLasso2012FTW!
 
-## Schema and Data Files
+## Schema + Data Files
 
-- schema-data.sql
+- `schema-data.sql`
 
 ## Modify `/database/connection.php`
 
