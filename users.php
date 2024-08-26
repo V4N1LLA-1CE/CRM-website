@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// check if user is logged in
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+  header("Location: login.php");
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -28,7 +36,7 @@
             <a class="nav-link active" href="#">Users</a>
             <a class="nav-link" href="./contact.php">Contact Us</a>
           </div>
-          <a href="login.php"><button class="btn btn-danger">Logout</button></a>
+          <a href="logout.php"><button class="btn btn-danger">Logout</button></a>
         </div>
       </div>
     </nav>
