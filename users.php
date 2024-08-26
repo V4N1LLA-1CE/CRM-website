@@ -1,7 +1,3 @@
-<?php
-$rows = 3;
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -25,14 +21,14 @@ $rows = 3;
         </button>
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" aria-current="page" href="#">Dashboard</a>
-            <a class="nav-link" href="#">Projects</a>
-            <a class="nav-link" href="#">Contractors</a>
-            <a class="nav-link" href="#">Organisations</a>
+            <a class="nav-link" href="./dashboard.php">Dashboard</a>
+            <a class="nav-link" href="./projects.php">Projects</a>
+            <a class="nav-link" href="./contractors.php">Contractors</a>
+            <a class="nav-link" href="./organisations.php">Organisations</a>
             <a class="nav-link active" href="#">Users</a>
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="./contact.php">Contact Us</a>
           </div>
-          <a href="login.html"><button class="btn btn-danger">Logout</button></a>
+          <a href="login.php"><button class="btn btn-danger">Logout</button></a>
         </div>
       </div>
     </nav>
@@ -51,13 +47,18 @@ $rows = 3;
         </tr>
       </thead>
       <tbody>
-        <?php for ($r = 1; $r <= $rows; $r++) { ?>
+        <?php
+        include './database/connection.php';
+        global $userDao;
+        $users = $userDao->getUsers();
+        foreach ($users as $user) {
+        ?>
           <tr>
-            <td><?= $r ?></td>
-            <td>xxx@gmail.com</td>
-            <td>xxx</td>
-            <td>xxx</td>
-            <td>xxx</td>
+            <td><?= $user['id']  ?></td>
+            <td><?= $user['email'] ?></td>
+            <td><?= $user['password'] ?></td>
+            <td><?= $user['first_name'] ?></td>
+            <td><?= $user['last_name'] ?></td>
           </tr>
         <?php } ?>
       </tbody>

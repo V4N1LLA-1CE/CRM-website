@@ -16,5 +16,5 @@ foreach ($users as $user) {
   }
 }
 
-header("Location: login.html?error=failed");
+header("Location: login.php?error=failed");
 exit();
