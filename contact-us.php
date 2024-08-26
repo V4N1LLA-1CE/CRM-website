@@ -101,7 +101,7 @@
                       </div>
                       <div class="text pl-4">
                         <p>
-                          <span>Website</span> <a href="/">b2brecruitz.com</a>
+                          <span>Website:</span> <a href="/">b2brecruitz.com</a>
                         </p>
                       </div>
                     </div>
@@ -124,7 +124,7 @@
                               class="form-control"
                               name="firstname"
                               id="name"
-                              placeholder="Firstname"
+                              placeholder="First Name"
                               required />
                           </div>
                         </div>
@@ -135,7 +135,7 @@
                               class="form-control"
                               name="lastname"
                               id="lastname"
-                              placeholder="Lastname"
+                              placeholder="Last Name"
                               required />
                           </div>
                         </div>
