@@ -25,3 +25,14 @@ Password: TedLasso2012FTW!
 ## Schema and Data Files
 
 - schema-data.sql
+
+## Modify `/database/connection.php`
+
+The dbname has been set according to the database created from `schema-data.sql` file. To ensure the connection works, `$username` and `$password` must be modified according to the credentials set on the assessor's machine.
+
+```php
+$host = 'localhost';
+$dbname = 'fit2104_a3_lab4_group10';
+$username = 'admin'; // CHANGE THIS
+$password = 'admin'; // CHANGE THIS
+```

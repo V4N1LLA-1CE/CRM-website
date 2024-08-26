@@ -69,8 +69,8 @@ ALTER TABLE `Project`
   ADD CONSTRAINT `fk_contractor_id_project` 
   FOREIGN KEY (`contractor_id`) REFERENCES `Contractor` (`id`);
 
--- Inserting sample data into the User table
-INSERT IGNORE INTO `User` (`email`, `password`, `first_name`, `last_name`)
+-- Inserting data into the User table
+INSERT INTO `User` (`email`, `password`, `first_name`, `last_name`)
 VALUES 
   ("Nathan.Jims@gmail.com", "Ilovechocolatemint12", "Nathan", "Jims"),
   ("J.Wilson@gmail.com", "TedLasso2012FTW!", "John", "Wilson");
