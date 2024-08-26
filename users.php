@@ -65,7 +65,7 @@
             <td><?= $user['password'] ?></td>
             <td><?= $user['first_name'] ?></td>
             <td><?= $user['last_name'] ?></td>
-            <td><a href="delete-user.php?id2delete=<?= $user['id'] ?>"><button class="btn btn-danger px-3">X</button></a></td>
+            <td class="d-flex justify-content-center align-items-center gap-3"><a href="delete-user.php?id2edit=<?= $user['id'] ?>"><button class="btn btn-danger px-3">X</button></a><a href="edit-user.php?id2edit=<?= $user['id'] ?>"><button class="btn btn-secondary"><img src="./assets/img/edit.svg" alt=" edit icon" width="20" /></button></a></td>
           </tr>
         <?php } ?>
       </tbody>

@@ -54,6 +54,27 @@ class UserDAO
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $users;
   }
+
+  public function modifyUser($id, $email, $password, $firstname, $lastname)
+  {
+    // Prepare the SQL statement
+    $sql = "
+        UPDATE User
+        SET email = :email,
+            password = :password,
+            first_name = :first_name,
+            last_name = :last_name
+        WHERE id = :id
+    ";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':first_name', $firstname);
+    $stmt->bindParam(':last_name', $lastname);
+
+    $stmt->execute();
+  }
 }
 
 // create global user data access object
