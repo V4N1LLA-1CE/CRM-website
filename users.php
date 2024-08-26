@@ -34,6 +34,13 @@
     </nav>
   </header>
 
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-dark mx-5 py-2 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Create New Admin +
+  </button>
+
+
+
   <main class="m-5 px-5 py-3 shadow">
     <h1>Admin Users</h1>
     <table id="userTable" class="display border">
@@ -64,6 +71,44 @@
       </tbody>
     </table>
   </main>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Admin User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-5">
+          <form action="add-user.php" method="POST">
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" required name="password">
+            </div>
+            <div class="mb-3">
+              <label for="firstname" class="form-label">Firstname</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" required>
+            </div>
+            <div class="mb-3">
+              <label for="lastname" class="form-label">Lastname</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" required>
+            </div>
+
+            <button type="submit" class="btn btn-dark">Create account</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- jquery -->
   <script src="lib/jquery/jquery-3.7.1.min.js"></script>
