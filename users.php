@@ -36,13 +36,11 @@
 
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-dark mx-5 py-2 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Create New Admin +
+    Create New User +
   </button>
 
-
-
   <main class="m-5 px-5 py-3 shadow">
-    <h1>Admin Users</h1>
+    <h1>Users</h1>
     <table id="userTable" class="display border">
       <thead>
         <tr>
@@ -51,6 +49,7 @@
           <th>Password</th>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -66,6 +65,7 @@
             <td><?= $user['password'] ?></td>
             <td><?= $user['first_name'] ?></td>
             <td><?= $user['last_name'] ?></td>
+            <td><a href="delete-user.php?id2delete=<?= $user['id'] ?>"><button class="btn btn-danger px-3">X</button></a></td>
           </tr>
         <?php } ?>
       </tbody>
@@ -78,7 +78,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create New Admin User</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create New User</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-5">

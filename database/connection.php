@@ -39,7 +39,8 @@ class UserDAO
 
   public function deleteUser($id)
   {
-    $stmt = $this->dbh->prepare("DELETE FROM User WHERE id = $id");
+    $stmt = $this->dbh->prepare("DELETE FROM User WHERE id = :id");
+    $stmt->bindParam(':id', $id);
     $stmt->execute();
   }
 
