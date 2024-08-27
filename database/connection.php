@@ -118,6 +118,13 @@ class OrgDAO
 
     $stmt->execute();
   }
+
+  public function deleteOrg($id)
+  {
+    $stmt = $this->dbh->prepare("DELETE FROM Organisation WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+  }
 }
 
 // create global orgDAO
