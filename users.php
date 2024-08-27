@@ -15,6 +15,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   <title>Users</title>
   <link rel="stylesheet" href="lib/datatables/dataTables.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/users.css" />
 </head>
 
 <body style="background-image: url('./assets/img/white-bg.jpg');">
@@ -47,7 +48,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     Create New User +
   </button>
 
-  <main class="m-5 px-5 py-3 shadow">
+  <main class="m-5 px-5 py-3 shadow overflow-auto">
     <h1>Users</h1>
     <table id="userTable" class="display border">
       <thead>
@@ -73,7 +74,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <td><?= $user['password'] ?></td>
             <td><?= $user['first_name'] ?></td>
             <td><?= $user['last_name'] ?></td>
-            <td class="d-flex justify-content-center align-items-center gap-3"><a href="delete-user.php?id2edit=<?= $user['id'] ?>"><button class="btn btn-danger px-3">X</button></a><a href="edit-user.php?id2edit=<?= $user['id'] ?>"><button class="btn btn-secondary"><img src="./assets/img/edit.svg" alt=" edit icon" width="20" /></button></a></td>
+            <td class="d-flex justify-content-center align-items-center gap-3"><a href="delete-user.php?id2delete=<?= $user['id'] ?>"><button class="btn btn-danger px-3">X</button></a><a href="edit-user.php?id2edit=<?= $user['id'] ?>"><button class="btn btn-secondary"><img src="./assets/img/edit.svg" alt=" edit icon" width="20" /></button></a></td>
           </tr>
         <?php } ?>
       </tbody>
