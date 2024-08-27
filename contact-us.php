@@ -115,7 +115,7 @@
                       method="POST"
                       id="contactForm"
                       name="contact"
-                      action="">
+                      action="./send-mail.php">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">

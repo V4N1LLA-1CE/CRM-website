@@ -8,7 +8,6 @@ $password = $_POST['password'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 
-var_dump($id, $email, $password, $firstname, $lastname);
 $userDao->modifyUser($id, $email, $password, $firstname, $lastname);
 header("Location: users.php");
 exit();
