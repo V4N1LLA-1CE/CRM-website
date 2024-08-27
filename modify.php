@@ -32,8 +32,8 @@ switch ($mode) {
 
   case 'contact':
     $replied = ($_POST['replied'] === "on" ? true : false);
-    $org = $_POST['organisation'];
-    $contactDao->modifyReplied($id, $replied, $org);
+    $org = (isset($_POST['organisation']) ? $_POST['organisation'] : NULL);
+    $contactDao->modifyRepliedAndOrg($id, $replied, $org);
     header("Location: contacts.php");
     exit();
     break;

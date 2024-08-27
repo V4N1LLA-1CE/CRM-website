@@ -162,8 +162,8 @@
                               class="form-control"
                               name="phone"
                               id="subject"
-                              placeholder="Phone (i.e. 044-444-4444)"
-                              pattern="0\d{2}-\d{3}-\d{4}"
+                              placeholder="Phone (i.e. 0123456789)"
+                              pattern="0\d{9}"
                               required />
                           </div>
                         </div>

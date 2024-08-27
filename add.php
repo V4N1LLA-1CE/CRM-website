@@ -63,7 +63,7 @@ switch ($mode) {
 
     // send mail
     if (mail($to, $subject, $body, $headers)) {
-      header("Location: contact-us.php");
+      header("Location: index.php");
     } else {
       echo "Sorry, there was an error sending your message. Please try again later.";
       exit();

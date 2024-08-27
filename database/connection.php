@@ -206,24 +206,33 @@ class ContactDao
     $stmt->execute();
   }
 
-  public function modifyReplied($id, $replied, $org)
+  public function modifyRepliedAndOrg($id, $replied, $org)
   {
-    $sql = "
-        UPDATE Contact_Us
-    SET replied = :val,
-    org_id = :org_id
-        WHERE id = :id
-    ";
-
-    $stmt = $this->dbh->prepare($sql);
-
     $id = intval($id);
-    $orgId = intval($org);
 
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':val', $replied, PDO::PARAM_BOOL);
-    $stmt->bindParam(':org_id', $orgId);
-    $stmt->execute();
+    // if no org_id selected, only update replied
+    if ($org === NULL) {
+      $sql = "UPDATE Contact_Us 
+              SET replied = :val
+              WHERE id = :id
+              ";
+      $stmt = $this->dbh->prepare($sql);
+      $stmt->bindParam(':id', $id);
+      $stmt->bindParam(':val', $replied, PDO::PARAM_BOOL);
+      $stmt->execute();
+    } else {
+      $sql = "UPDATE Contact_Us
+              SET replied = :val,
+                  org_id = :org_id
+              WHERE id = :id
+              ";
+      $stmt = $this->dbh->prepare($sql);
+      $orgId = intval($org);
+      $stmt->bindParam(':id', $id);
+      $stmt->bindParam(':val', $replied, PDO::PARAM_BOOL);
+      $stmt->bindParam(':org_id', $orgId);
+      $stmt->execute();
+    }
   }
 }
 
