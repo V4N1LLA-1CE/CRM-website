@@ -258,6 +258,13 @@ class ContractorDao
     $contractors = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $contractors;
   }
+
+  public function deleteContractor($id)
+  {
+    $stmt = $this->dbh->prepare("DELETE FROM Contractor WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+  }
 }
 
 global $contractorDao;

@@ -113,7 +113,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                   </button>
                 </a>
-                <a href="">
+                <a href="delete.php?id2delete=<?= $contractor['id'] ?>&mode=contractor">
                   <button class="btn btn-danger px-3">X</button>
                 </a>
               </div>
