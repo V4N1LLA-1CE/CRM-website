@@ -2,6 +2,7 @@
 include './database/connection.php';
 global $userDao;
 global $orgDao;
+global $contactDao;
 
 $id = intval($_GET['id2delete']);
 $mode = ($_GET['mode']);
@@ -16,6 +17,12 @@ switch ($mode) {
   case 'org':
     $orgDao->deleteOrg($id);
     header("Location: organisations.php");
+    exit();
+    break;
+
+  case 'contact':
+    $contactDao->deleteContact($id);
+    header("Location: contacts.php");
     exit();
     break;
 
