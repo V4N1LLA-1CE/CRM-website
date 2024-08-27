@@ -121,6 +121,13 @@ class OrgDAO
 
   public function deleteOrg($id)
   {
+    // delete contact-us messages and projects
+    // Delete associated contact-us messages
+    $contactStmt = $this->dbh->prepare("DELETE FROM Contact_Us WHERE org_id = :id");
+    $contactStmt->bindParam(':id', $id);
+    $contactStmt->execute();
+
+    // delete org
     $stmt = $this->dbh->prepare("DELETE FROM Organisation WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
