@@ -126,6 +126,7 @@
                               name="firstname"
                               id="name"
                               placeholder="First Name"
+                              maxlength="30"
                               required />
                           </div>
                         </div>
@@ -137,6 +138,7 @@
                               name="lastname"
                               id="lastname"
                               placeholder="Last Name"
+                              maxlength="30"
                               required />
                           </div>
                         </div>
@@ -149,6 +151,7 @@
                               name="email"
                               id="email"
                               placeholder="Email"
+                              maxlength="50"
                               required />
                           </div>
                         </div>
@@ -173,6 +176,7 @@
                               cols="30"
                               rows="5"
                               placeholder="Message"
+                              maxlength="120"
                               required
                               minlength="10"></textarea>
                           </div>
