@@ -191,6 +191,33 @@ class ContactDao
 
     $stmt->execute();
   }
+
+  public function deleteContact($id)
+  {
+    $stmt = $this->dbh->prepare("DELETE FROM Contact_Us WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+  }
+
+  public function modifyReplied($id, $replied, $org)
+  {
+    $sql = "
+        UPDATE Contact_Us
+    SET replied = :val,
+    org_id = :org_id
+        WHERE id = :id
+    ";
+
+    $stmt = $this->dbh->prepare($sql);
+
+    $id = intval($id);
+    $orgId = intval($org);
+
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':val', $replied, PDO::PARAM_BOOL);
+    $stmt->bindParam(':org_id', $orgId);
+    $stmt->execute();
+  }
 }
 
 global $contactDao;
