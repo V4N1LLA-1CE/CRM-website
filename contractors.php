@@ -58,6 +58,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <table id="userTable" class="display border">
       <thead>
         <tr>
+          <td>Profile</td>
           <th>Contractor ID</th>
           <th>Firstname</th>
           <th>LastName</th>
@@ -74,8 +75,30 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         global $contractorDao;
         $contractors = $contractorDao->getContractors();
         foreach ($contractors as $contractor) {
+
+          // define extensions
+          $extensions = ['.jpg', '.jpeg', '.png', '.gif'];
+          $path = "./assets/img/contractor_profiles/" . $contractor['id'];
+
+          // check if file exists
+          foreach ($extensions as $ext) {
+            $pathToCheck = $path . $ext;
+            if (file_exists($pathToCheck)) {
+              $path =  $pathToCheck;
+              break;
+            }
+          }
+
+          // if there is still no file found, use default img
+          if (!file_exists($path)) {
+            $path = "./assets/img/contractor_profiles/default.svg";
+          }
+
         ?>
           <tr>
+            <td>
+              <div class="d-flex align-items-center justify-content-center"><a href="edit-page.php"><img src="<?= $path ?>" alt="pfp" width="75" height="75" class="rounded-circle "></a></div>
+            </td>
             <td><?= $contractor['id']  ?></td>
             <td><?= $contractor['first_name'] ?></td>
             <td><?= $contractor['last_name'] ?></td>
@@ -85,7 +108,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <td><?= $contractor['address'] ?></td>
             <td>
               <div class="d-flex align-items-center gap-2">
-                <a href="">
+                <a href="edit-page.php">
                   <button class="btn btn-secondary">
                     <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                   </button>
