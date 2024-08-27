@@ -97,7 +97,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?>
           <tr>
             <td>
-              <div class="d-flex align-items-center justify-content-center"><a href="edit-page.php"><img src="<?= $path ?>" alt="pfp" width="75" height="75" class="rounded-circle "></a></div>
+              <div class="d-flex align-items-center justify-content-center"><a href="edit-page.php?id2edit=<?= $contractor['id'] ?>&mode=contractor&contractor-img=<?= $path ?>"><img src="<?= $path ?>" alt="pfp" width="75" height="75" class="rounded-circle "></a></div>
             </td>
             <td><?= $contractor['id']  ?></td>
             <td><?= $contractor['first_name'] ?></td>
@@ -108,7 +108,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <td><?= $contractor['address'] ?></td>
             <td>
               <div class="d-flex align-items-center gap-2">
-                <a href="edit-page.php">
+                <a href="edit-page.php?id2edit=<?= $contractor['id'] ?>&mode=contractor&contractor-img=<?= $path ?>">
                   <button class="btn btn-secondary">
                     <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                   </button>

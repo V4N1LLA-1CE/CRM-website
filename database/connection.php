@@ -265,6 +265,34 @@ class ContractorDao
     $stmt->bindParam(':id', $id);
     $stmt->execute();
   }
+
+  public function modifyContractor($id, $firstname, $lastname, $specialisation, $email, $phone, $address)
+  {
+    // SQL query to update the contractor details
+    $sql = "UPDATE Contractor 
+            SET first_name = :firstname, 
+                last_name = :lastname, 
+                specialisation = :specialisation, 
+                email = :email, 
+                phone_number = :phone, 
+                address = :address 
+            WHERE id = :id";
+
+    // Prepare the SQL statement
+    $stmt = $this->dbh->prepare($sql);
+
+    // Bind the parameters to the SQL query
+    $stmt->bindParam(':firstname', $firstname);
+    $stmt->bindParam(':lastname', $lastname);
+    $stmt->bindParam(':specialisation', $specialisation);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':address', $address);
+    $stmt->bindParam(':id', $id);
+
+    // Execute the statement
+    $stmt->execute();
+  }
 }
 
 global $contractorDao;

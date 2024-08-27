@@ -2,6 +2,7 @@
 include './database/connection.php';
 global $userDao;
 global $orgDao;
+global $contractorDao;
 
 $id2edit = intval($_GET['id2edit']);
 $mode = $_GET['mode'];
@@ -35,6 +36,22 @@ switch ($mode) {
     $img = "assets/img/organisation.svg";
     $backlink = "./organisations.php";
     break;
+
+  case 'contractor':
+    $contractors = $contractorDao->getContractors();
+    $backlink = "./contractors.php";
+    $img = $_GET['contractor-img'];
+
+    foreach ($contractors as $contractor) {
+      if ($contractor['id'] === $id2edit) {
+        $display = $contractor['first_name'] . " " . $contractor['last_name'];
+      }
+    }
+
+    break;
+
+  default:
+    echo "You must use a mode with GET request!";
 }
 
 
@@ -52,10 +69,10 @@ switch ($mode) {
 
 <body class=" justify-content-center d-flex align-items-center flex-column">
   <a href=<?= $backlink ?> class="mb-4"><button class="btn btn-dark">Back</button></a>
-  <form action="./modify.php" method="POST" class="d-flex flex-column gap-4 p-5  shadow">
+  <form action="./modify.php" method="POST" class="d-flex flex-column gap-4 p-5  shadow" enctype="multipart/form-data">
     <div class="align-self-center d-flex flex-column justify-content-center align-items-center mb-4 ">
-      <img src=<?= $img ?> alt="display image" width="60">
-      <h5><?= $display ?></h5>
+      <img class="<?= ($mode === 'contractor' ? 'rounded-circle' : '') ?>" src=<?= $img ?> alt="display image" width="60">
+      <h5 class="mt-2"><?= $display ?></h5>
     </div>
 
     <!-- field for hidden posts (id and mode)-->
@@ -72,6 +89,17 @@ switch ($mode) {
       <div><input value="<?= $org['website'] ?>" type="text" name="website" class="form-control" placeholder="Website" required /></div>
       <div><input value="<?= $org['desc'] ?>" type="text" class="form-control" name="description" placeholder="Description" required /></div>
       <div><input value="<?= $org['industry'] ?>" type="text" name="industry" class="form-control" placeholder="Industry" required /></div>
+    <?php } elseif ($mode === 'contractor') { ?>
+      <div class="d-flex flex-column gap-3">
+        <label for="file">Upload Profile Image</label>
+        <input type="file" id="file" name="file" />
+      </div>
+      <div><input value="<?= $contractor['first_name'] ?>" class="form-control" type="text" name="firstname" placeholder="First Name" required /></div>
+      <div><input value="<?= $contractor['last_name'] ?>" class="form-control" type="text" name="lastname" placeholder="Last Name" required /></div>
+      <div><input value="<?= $contractor['specialisation'] ?>" class="form-control" type="text" name="specialisation" placeholder="Specialisation" required /></div>
+      <div><input value="<?= $contractor['email'] ?>" class="form-control" type="email" name="email" placeholder="Email" required /></div>
+      <div><input value="<?= $contractor['phone_number'] ?>" class="form-control" pattern="0\d{9}" type="tel" name="phone" placeholder="Phone" required /></div>
+      <div><input value="<?= $contractor['address'] ?>" class="form-control" type="text" name="address" placeholder="Address" required /></div>
     <?php } ?>
 
     <button type="submit" class="btn btn-dark">Confirm Changes</button>
