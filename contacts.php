@@ -58,12 +58,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   </header>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-dark mx-5 my-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <button type="button" class="btn btn-dark mx-5 py-2 mt-5 " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Manage #
   </button>
 
 
-  <main class="mx-5 px-5 py-3 shadow overflow-auto">
+  <main class="m-5 px-5 py-3 shadow overflow-auto">
     <h1>Contacts</h1>
     <table id="userTable" class="display border">
       <thead>
