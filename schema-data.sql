@@ -75,3 +75,15 @@ VALUES
   ("Nathan.Jims@gmail.com", "Ilovechocolatemint12", "Nathan", "Jims"),
   ("J.Wilson@gmail.com", "TedLasso2012FTW!", "John", "Wilson");
 
+-- Insert data into Organisation table
+INSERT INTO `Organisation` (`name`, `website`, `desc`, `industry`)
+VALUES 
+  ("Tech Innovators Inc.", "https://www.techinnovators.com", "A leading tech company specializing in innovative solutions and cutting-edge technologies.", "Technology"),
+  ("Green Future Ltd.", "https://www.greenfuture.com", "An environmental organization dedicated to promoting sustainable practices and green energy.", "Environmental"),
+  ("Global Health Services", "https://www.globalhealthservices.org", "Provides healthcare services and medical research to improve global health.", "Healthcare"),
+  ("EduTech Solutions", "https://www.edutechsolutions.com", "Offers educational technology solutions to enhance learning experiences.", "Education"),
+  ("Creative Arts Foundation", "https://www.creativeartsfoundation.org", "Supports and promotes arts and culture through various initiatives and programs.", "Arts & Culture"),
+  ("FinServe Consulting", "https://www.finserveconsulting.com", "Financial consulting firm providing expert advice on investments and financial planning.", "Finance"),
+  ("Urban Development Corp.", "https://www.urbandevelopmentcorp.com", "Specializes in urban planning and development projects to enhance city infrastructure.", "Real Estate");
+
+
