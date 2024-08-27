@@ -238,3 +238,27 @@ class ContactDao
 
 global $contactDao;
 $contactDao = new ContactDao();
+
+
+class ContractorDao
+{
+  private $dbh;
+
+  public function __construct()
+  {
+    global $dbh;
+    $this->dbh = $dbh;
+  }
+
+  public function getContractors()
+  {
+    $stmt = $this->dbh->prepare("SELECT * FROM Contractor");
+    $stmt->execute();
+
+    $contractors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $contractors;
+  }
+}
+
+global $contractorDao;
+$contractorDao = new ContractorDao();
