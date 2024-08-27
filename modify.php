@@ -41,7 +41,7 @@ switch ($mode) {
 
   case 'contractor':
     // set variables sent
-    $file = (isset($_FILES['file']) ? $_FILES['file'] : NULL);
+    $file = ((isset($_FILES['file']) && $_FILES['file']['error'] == 0) ? $_FILES['file'] : NULL);
 
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -50,15 +50,44 @@ switch ($mode) {
     $phone = $_POST['phone'];
     $address = $_POST['address'];
 
+    // edit other changes
     $contractorDao->modifyContractor($id, $firstname, $lastname, $specialisation, $email, $phone, $address);
-    header("Location: contractors.php");
 
+    // handle file checks and upload
+    if ($file !== NULL) {
+      // Set allowed file types
+      $allowedTypes = [
+        'text/plain',
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'image/jpg'
+      ];
+
+      // check file MIME type
+      if (in_array($_FILES['file']['type'], $allowedTypes)) {
+        // set filename to be the id of contractor
+        // 1. get extension, 2. set destination with id and extension at the end
+        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $fileDestination = "assets" . DIRECTORY_SEPARATOR . "img" . DIRECTORY_SEPARATOR . "contractor_profiles" . DIRECTORY_SEPARATOR . $id . "." . $fileExtension;
+
+        // move uploaded file to destination
+        if (move_uploaded_file($file['tmp_name'], $fileDestination)) {
+          header("Location: contractors.php");
+          exit();
+        } else {
+          echo "<h1>File cannot be stored to the final destination!</h1>";
+        }
+      } else {
+        echo "<h1 style='color:red'>You must upload a valid text or image file!</h1>";
+      }
+    }
+
+
+    header("Location: contractors.php");
     exit();
     break;
 
-    // handle file checks
-
-    // edit other changes
 
   default:
     echo "ERROR! Your modify request must send a mode!";
