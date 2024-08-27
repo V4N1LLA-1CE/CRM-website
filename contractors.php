@@ -52,6 +52,68 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       </div>
     </nav>
   </header>
+
+  <main class="m-5 px-5 py-3 shadow overflow-auto">
+    <h1>Contractors</h1>
+    <table id="userTable" class="display border">
+      <thead>
+        <tr>
+          <th>Contractor ID</th>
+          <th>Firstname</th>
+          <th>LastName</th>
+          <th>Specialisation</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        include './database/connection.php';
+        global $contractorDao;
+        $contractors = $contractorDao->getContractors();
+        foreach ($contractors as $contractor) {
+        ?>
+          <tr>
+            <td><?= $contractor['id']  ?></td>
+            <td><?= $contractor['first_name'] ?></td>
+            <td><?= $contractor['last_name'] ?></td>
+            <td><?= $contractor['specialisation'] ?></td>
+            <td><?= $contractor['email'] ?></td>
+            <td><?= $contractor['phone_number'] ?></td>
+            <td><?= $contractor['address'] ?></td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <a href="">
+                  <button class="btn btn-secondary">
+                    <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
+                  </button>
+                </a>
+                <a href="">
+                  <button class="btn btn-danger px-3">X</button>
+                </a>
+              </div>
+            </td>
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </main>
+
+  <!-- jquery -->
+  <script src="lib/jquery/jquery-3.7.1.min.js"></script>
+
+  <!-- datatables -->
+  <script src="lib/datatables/dataTables.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#userTable").DataTable();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
