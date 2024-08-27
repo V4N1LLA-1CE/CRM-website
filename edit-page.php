@@ -45,6 +45,7 @@ switch ($mode) {
     foreach ($contractors as $contractor) {
       if ($contractor['id'] === $id2edit) {
         $display = $contractor['first_name'] . " " . $contractor['last_name'];
+        break;
       }
     }
 
