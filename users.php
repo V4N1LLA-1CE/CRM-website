@@ -114,7 +114,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-5">
-          <form action="add-user.php" method="POST">
+          <form action="add.php" method="POST">
 
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -133,7 +133,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
               <label for="lastname" class="form-label">Lastname</label>
               <input type="text" class="form-control" id="lastname" name="lastname" required>
             </div>
-
+            <input type="hidden" name="mode" value="user">
             <button type="submit" class="btn btn-dark">Create account</button>
           </form>
 

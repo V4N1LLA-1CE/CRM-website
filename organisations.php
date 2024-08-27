@@ -113,7 +113,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-5">
-          <form action="add-org.php" method="POST">
+          <form action="add.php" method="POST">
 
             <div class="mb-3">
               <label for="name" class="form-label">Organisation Name</label>
@@ -133,6 +133,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             </div>
 
             <button type="submit" class="btn btn-dark">Add Organisation</button>
+            <input type="hidden" name="mode" value="org">
+
           </form>
 
         </div>

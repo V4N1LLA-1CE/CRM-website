@@ -12,9 +12,13 @@ switch ($mode) {
     header("Location: users.php");
     exit();
     break; // idk if this is needed or not.. - Austin
+
   case 'org':
     $orgDao->deleteOrg($id);
     header("Location: organisations.php");
     exit();
     break;
+
+  default:
+    echo "ERROR GET/POST for CRUD must be made with a mode!";
 }
