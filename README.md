@@ -24,14 +24,6 @@ Nathan.Jims@gmail.com
 Ilovechocolatemint12
 ```
 
-```bash
-# Username
-J.Wilson@gmail.com
-
-# Password
-Password: TedLasso2012FTW!
-```
-
 ## Schema + Data Files
 
 - `/database/schema-data.sql`
