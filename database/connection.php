@@ -10,6 +10,7 @@ $password = 'admin';
 global $dbh;
 $dbh = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
+// Create User Data Access Object
 class UserDAO
 {
   private $dbh;
@@ -80,3 +81,45 @@ class UserDAO
 // create global user data access object
 global $userDao;
 $userDao = new UserDAO();
+
+// Organisation DAO
+class OrgDAO
+{
+  private $dbh;
+  public function __construct()
+  {
+    global $dbh;
+    $this->dbh = $dbh;
+  }
+
+  public function getOrgs()
+  {
+    $sql = "SELECT * FROM Organisation";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->execute();
+
+    // fetch all users and return dictionary
+    $orgs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $orgs;
+  }
+
+  public function insertOrg($name, $site, $desc, $industry)
+  {
+    // NOTE: apparently desc is reserved keyword for descending in sql, so backticks are needed so sql treats it as a field
+    $sql = "
+            INSERT INTO Organisation (name, website, `desc`, industry)
+            VALUES (:name, :site, :desc, :industry)
+    ";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':site', $site);
+    $stmt->bindParam(':desc', $desc);
+    $stmt->bindParam(':industry', $industry);
+
+    $stmt->execute();
+  }
+}
+
+// create global orgDAO
+global $orgDao;
+$orgDao = new OrgDAO();

@@ -12,7 +12,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Users</title>
+  <title>Organisations</title>
   <link rel="stylesheet" href="lib/datatables/dataTables.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/datatable.css" />
@@ -38,10 +38,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
               <a class="nav-link " href="./contractors.php">Contractors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./organisations.php">Organisations</a>
+              <a class="nav-link active" href="./organisations.php">Organisations</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="./users.php">Users</a>
+              <a class="nav-link " href="./users.php">Users</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./contacts.php">Contacts</a>
@@ -56,46 +56,45 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-dark mx-5 py-2 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Create New User +
+    Add New Organisation +
   </button>
 
   <main class="m-5 px-5 py-3 shadow overflow-auto">
-    <h1>Users</h1>
+    <h1>Organisations</h1>
     <table id="userTable" class="display border">
       <thead>
         <tr>
-          <th>User ID</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Organisation ID</th>
+          <th>Name</th>
+          <th>Website</th>
+          <th>Description</th>
+          <th>Industry</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <?php
         include './database/connection.php';
-        global $userDao;
-        $users = $userDao->getUsers();
-        foreach ($users as $user) {
+        global $orgDao;
+        $orgs = $orgDao->getOrgs();
+        foreach ($orgs as $org) {
         ?>
           <tr>
-            <td><?= $user['id']  ?></td>
-            <td><?= $user['email'] ?></td>
-            <td><?= $user['password'] ?></td>
-            <td><?= $user['first_name'] ?></td>
-            <td><?= $user['last_name'] ?></td>
-            <td class="">
+            <td><?= $org['id']  ?></td>
+            <td><?= $org['name'] ?></td>
+            <td><?= $org['website'] ?></td>
+            <td><?= $org['desc'] ?></td>
+            <td><?= $org['industry'] ?></td>
+            <td>
               <div class="d-flex align-items-center gap-2">
-                <a href="edit-user.php?id2edit=<?= $user['id'] ?>">
+                <a href="">
                   <button class="btn btn-secondary">
                     <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                   </button>
                 </a>
-                <a href="delete-user.php?id2delete=<?= $user['id'] ?>">
+                <a href="#">
                   <button class="btn btn-danger px-3">X</button>
                 </a>
-
               </div>
             </td>
           </tr>
@@ -110,31 +109,30 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Create New User</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add a New Organisation</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-5">
-          <form action="add-user.php" method="POST">
+          <form action="add-org.php" method="POST">
 
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <label for="name" class="form-label">Organisation Name</label>
+              <input type="text" name="name" class="form-control" id="name" required>
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" required name="password">
+              <label for="website" class="form-label">Website</label>
+              <input type="text" class="form-control" id="website" required name="website">
             </div>
             <div class="mb-3">
-              <label for="firstname" class="form-label">Firstname</label>
-              <input type="text" class="form-control" id="firstname" name="firstname" required>
+              <label for="desc" class="form-label">Description</label>
+              <input type="text" class="form-control" id="desc" name="description" required>
             </div>
             <div class="mb-3">
-              <label for="lastname" class="form-label">Lastname</label>
-              <input type="text" class="form-control" id="lastname" name="lastname" required>
+              <label for="industry" class="form-label">Industry</label>
+              <input type="text" class="form-control" id="industry" name="industry" required>
             </div>
 
-            <button type="submit" class="btn btn-dark">Create account</button>
+            <button type="submit" class="btn btn-dark">Add Organisation</button>
           </form>
 
         </div>

@@ -34,7 +34,7 @@ Password: TedLasso2012FTW!
 
 ## Schema + Data Files
 
-- `schema-data.sql`
+- `/database/schema-data.sql`
 
 ## Modify `/database/connection.php`
 
