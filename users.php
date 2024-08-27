@@ -87,7 +87,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <td><?= $user['last_name'] ?></td>
             <td class="">
               <div class="d-flex align-items-center gap-2">
-                <a href="edit-user.php?id2edit=<?= $user['id'] ?>">
+                <a href="edit-page.php?id2edit=<?= $user['id'] ?>&mode=user">
                   <button class="btn btn-secondary">
                     <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                   </button>

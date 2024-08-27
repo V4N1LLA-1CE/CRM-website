@@ -87,7 +87,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <td><?= $org['industry'] ?></td>
             <td>
               <div class="d-flex align-items-center gap-2">
-                <a href="">
+                <a href="edit-page.php?id2edit=<?= $org['id'] ?>&mode=org">
                   <button class="btn btn-secondary">
                     <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                   </button>

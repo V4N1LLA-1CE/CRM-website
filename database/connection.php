@@ -125,6 +125,27 @@ class OrgDAO
     $stmt->bindParam(':id', $id);
     $stmt->execute();
   }
+
+  public function modifyOrg($id, $name, $site, $desc, $industry)
+  {
+    // Prepare the SQL statement
+    $sql = "
+        UPDATE Organisation 
+        SET name = :name,
+            website = :website,
+            `desc` = :desc,
+            industry = :industry
+        WHERE id = :id
+    ";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':website', $site);
+    $stmt->bindParam(':desc', $desc);
+    $stmt->bindParam(':industry', $industry);
+
+    $stmt->execute();
+  }
 }
 
 // create global orgDAO
