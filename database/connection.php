@@ -151,3 +151,47 @@ class OrgDAO
 // create global orgDAO
 global $orgDao;
 $orgDao = new OrgDAO();
+
+
+// create contact us DAO
+class ContactDao
+{
+
+  private $dbh;
+
+  public function __construct()
+  {
+    global $dbh;
+    $this->dbh = $dbh;
+  }
+
+  public function getContacts()
+  {
+    $sql = "SELECT * FROM Contact_Us";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->execute();
+
+    // fetch all users and return dictionary
+    $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $contacts;
+  }
+
+  public function insertContacts($fname, $lname, $phone, $message, $replied = false)
+  {
+    $sql = "
+            INSERT INTO Contact_Us (first_name, last_name, phone_number, message, replied)
+            VALUES (:first_name, :last_name, :phone, :message, :replied)
+    ";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindParam(':first_name', $fname);
+    $stmt->bindParam(':last_name', $lname);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':message', $message);
+    $stmt->bindParam(':replied', $replied, PDO::PARAM_BOOL);
+
+    $stmt->execute();
+  }
+}
+
+global $contactDao;
+$contactDao = new ContactDao();

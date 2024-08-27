@@ -2,7 +2,9 @@
 include './database/connection.php';
 global $userDao;
 global $orgDao;
+global $contactDao;
 
+// get mode from either POST or GET
 if (isset($_GET['mode'])) {
   $mode = $_GET['mode'];
 } else {
@@ -34,6 +36,42 @@ switch ($mode) {
     exit();
     break;
 
+  case 'contact':
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $phone = $_POST['phone'];
+    $message = $_POST['message'];
+
+    // email for email header
+    $email = $_POST['email'];
+
+    $contactDao->insertContacts($firstname, $lastname, $phone, $message);
+
+    // create mail components
+    $to = "NathanJims@b2brecruitz.com";
+    $subject = "Contact Us Form Submission";
+    $body = "You have received a new message from the Contact Us form on your website.\n\n" .
+      "Here are the details:\n" .
+      "Full Name: $firstname $lastname\n" .
+      "Email: $email\n" .
+      "Phone: $phone\n" .
+      "Message: \n$message\n";
+
+    $headers = "From: $email" . "\r\n" .
+      "Reply-To: $email" . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+
+    // send mail
+    if (mail($to, $subject, $body, $headers)) {
+      header("Location: contact-us.php");
+    } else {
+      echo "Sorry, there was an error sending your message. Please try again later.";
+      exit();
+    }
+
+
+
   default:
     echo "ERROR GET/POST for CRUD must be made with a mode!";
+    break;
 }

@@ -115,7 +115,8 @@
                       method="POST"
                       id="contactForm"
                       name="contact"
-                      action="./send-mail.php">
+                      action="./add.php">
+                      <input type="hidden" value="contact" name="mode">
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">

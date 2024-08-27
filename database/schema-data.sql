@@ -88,3 +88,12 @@ VALUES
   ("Capital Growth Partners", "https://www.capitalgrowthpartners.com", "Provides investment and financial management services.", "Finance"),
   ("Metro Innovations Inc.", "https://www.metroinnovationsinc.com", "Engages in innovative urban development and planning projects.", "Real Estate");
 
+-- Insert data into the Contact_Us table with relevant messages for a B2B recruiting business
+INSERT INTO `Contact_Us` (`first_name`, `last_name`, `phone_number`, `message`, `replied`, `org_id`)
+VALUES 
+  ('Michael', 'Anderson', '041-234-5678', 'I am interested in learning more about your recruitment services for technology roles.', 0, NULL),
+  ('Sophie', 'Turner', '042-987-6543', 'Can we arrange a discussion about potential recruitment partnerships?', 0, NULL),
+  ('William', 'Collins', '043-765-4321', 'Looking for information on how your recruitment services can assist with healthcare staffing.', 0, NULL),
+  ('Emily', 'Clark', '044-555-1234', 'I would like to understand your approach to recruiting for educational positions.', 0, NULL),
+  ('James', 'Wilson', '045-678-9101', 'I have questions about how your services can support recruitment in the arts and culture sector.', 0, NULL);
+
