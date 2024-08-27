@@ -65,6 +65,8 @@
               <li><a href="./contractors.php">Contractors</a></li>
               <li><a href="./organisations.php">Organisations</a></li>
               <li><a href="./users.php">Users</a></li>
+              <li><a href="/contacts.php">Contacts</a></li>
+
               <li><a href="/login.php">Login</a></li>
             </ul>
           </li>
