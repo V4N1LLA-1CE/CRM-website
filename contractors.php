@@ -149,7 +149,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?>
           <tr>
             <td>
-              <div class="d-flex align-items-center justify-content-center"><a href="edit-page.php?id2edit=<?= $contractor['id'] ?>&mode=contractor&contractor-img=<?= $path ?>"><img src="<?= $path ?>" alt="pfp" width="75" height="75" class="rounded-circle "></a></div>
+              <div class="d-flex align-items-center justify-content-center"><a href="edit-page.php?id2edit=<?= $contractor['id'] ?>&mode=contractor&contractor-img=<?= $path ?>"><img src="<?= $path ?>" alt="pfp" width="75" height="75" class="rounded-circle custom-hover-effect"></a></div>
             </td>
             <td><?= $contractor['id']  ?></td>
             <td><?= $contractor['first_name'] ?></td>
