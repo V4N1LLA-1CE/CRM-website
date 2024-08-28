@@ -101,7 +101,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       foreach ($projects as $project) {
         // check if id exists in both project and map
         $orgName = (isset($project['org_id']) && isset($orgMap[$project['org_id']]) ? $orgMap[$project['org_id']] : "--");
-        $contractorName = (isset($project['contractor_id']) && isset($contractorMap[$project['contractor_id']]) ? $contractorMap[$project['contractor_id']] : "--")
+        $contractorName = (isset($project['contractor_id']) && isset($contractorMap[$project['contractor_id']]) ? $contractorMap[$project['contractor_id']] : "--");
 
       ?>
         <tr>
@@ -115,7 +115,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <td><?= $contractorName  ?></td>
           <td>
             <div class="d-flex align-items-center gap-2">
-              <a href="">
+              <a href="edit-page.php?id2edit=<?= $project['id'] ?>&mode=project">
                 <button class="btn btn-secondary">
                   <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
                 </button>

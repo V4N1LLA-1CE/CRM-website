@@ -388,6 +388,36 @@ class ProjectDao
     // Execute the statement
     $stmt->execute();
   }
+
+  public function modify($id, $name, $desc, $technique, $due, $pmt, $org, $contractor)
+  {
+    // Prepare the SQL query to update the Project table
+    $sql = "UPDATE Project 
+            SET name = :name, 
+                `desc` = :desc, 
+                technique_required = :technique, 
+                due_date = :due, 
+                pmt_link = :pmt, 
+                org_id = :org, 
+                contractor_id = :contractor 
+            WHERE id = :id";
+
+    // prepare statement
+    $stmt = $this->dbh->prepare($sql);
+
+    // Bind the parameters to the SQL query
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':desc', $desc, PDO::PARAM_STR);
+    $stmt->bindParam(':technique', $technique, PDO::PARAM_STR);
+    $stmt->bindParam(':due', $due);
+    $stmt->bindParam(':pmt', $pmt, PDO::PARAM_STR);
+    $stmt->bindParam(':org', $org, PDO::PARAM_INT);
+    $stmt->bindParam(':contractor', $contractor, PDO::PARAM_INT);
+
+    // execute query
+    $stmt->execute();
+  }
 }
 
 global $projectDao;

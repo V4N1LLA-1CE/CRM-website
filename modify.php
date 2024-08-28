@@ -4,6 +4,7 @@ global $userDao;
 global $orgDao;
 global $contactDao;
 global $contractorDao;
+global $projectDao;
 
 $id = intval($_POST['id2edit']);
 $mode = ($_POST['mode']);
@@ -86,6 +87,25 @@ switch ($mode) {
 
     header("Location: contractors.php");
     exit();
+    break;
+
+  case 'project':
+    // set variables
+    $name = $_POST['name'];
+    $desc = $_POST['desc'];
+    $technique = $_POST['technique_required'];
+    $due = $_POST['due_date'];
+    $pmt = $_POST['pmt_link'];
+    $org = $_POST['org_id'];
+    $contractor = $_POST['contractor_id'];
+
+    // modify project
+    $projectDao->modify($id, $name, $desc, $technique, $due, $pmt, $org, $contractor);
+    header("Location: projects.php");
+    exit();
+    break;
+
+
     break;
 
 

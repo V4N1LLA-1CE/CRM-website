@@ -3,6 +3,7 @@ include './database/connection.php';
 global $userDao;
 global $orgDao;
 global $contractorDao;
+global $projectDao;
 
 $id2edit = intval($_GET['id2edit']);
 $mode = $_GET['mode'];
@@ -45,6 +46,20 @@ switch ($mode) {
     foreach ($contractors as $contractor) {
       if ($contractor['id'] === $id2edit) {
         $display = $contractor['first_name'] . " " . $contractor['last_name'];
+        break;
+      }
+    }
+
+    break;
+
+  case 'project':
+    $projects = $projectDao->getProjects();
+    $backlink = "projects.php";
+    $img = "assets/img/projects.svg";
+
+    foreach ($projects as $project) {
+      if ($project['id'] === $id2edit) {
+        $display = $project["name"];
         break;
       }
     }
@@ -101,6 +116,41 @@ switch ($mode) {
       <div><input value="<?= $contractor['email'] ?>" class="form-control" type="email" name="email" placeholder="Email" required /></div>
       <div><input value="<?= $contractor['phone_number'] ?>" class="form-control" pattern="0\d{9}" type="tel" name="phone" placeholder="Phone" required /></div>
       <div><input value="<?= $contractor['address'] ?>" class="form-control" type="text" name="address" placeholder="Address" required /></div>
+    <?php } elseif ($mode === 'project') { ?>
+      <div><input value="<?= $project['name'] ?>" class="form-control" type="text" name="name" placeholder="Project Name" required /></div>
+      <div><input value="<?= $project['desc'] ?>" class="form-control" type="text" name="desc" placeholder="Description" required /></div>
+      <div><input value="<?= $project['technique_required'] ?>" class="form-control" type="text" name="technique_required" placeholder="Technique Required" required /></div>
+      <div><input value="<?= $project['due_date'] ?>" class="form-control" type="date" name="due_date" placeholder="Due Date" required /></div>
+      <div><input value="<?= $project['pmt_link'] ?>" class="form-control" type="url" name="pmt_link" placeholder="Project Management Tool Link" required /></div>
+      <div>
+        <label for="org" class="form-label">Organisation</label>
+        <select class="form-select" id="org" name="org_id" required>
+          <option disabled>Select Organisation</option>
+
+          <?php
+          $orgs = $orgDao->getOrgs();
+          foreach ($orgs as $org) { ?>
+            <option value="<?= $org['id'] ?>" <?= $project['org_id'] === $org['id'] ? 'selected' : '' ?>>
+              <?= ($org['name']) ?>
+            </option>
+          <?php } ?>
+        </select>
+      </div>
+      <div>
+        <label for="contractor" class="form-label">Contractor</label>
+        <select class="form-select" id="contractor" name="contractor_id" required>
+          <option disabled>Select Contractor</option>
+
+          <?php
+          $contractors = $contractorDao->getContractors();
+          foreach ($contractors as $contractor) { ?>
+            <option value="<?= $contractor['id'] ?>" <?= $project['contractor_id'] === $contractor['id'] ? 'selected' : '' ?>>
+              <?= ($contractor['first_name'] . " " . $contractor['last_name']) ?>
+            </option>
+          <?php } ?>
+        </select>
+      </div>
+
     <?php } ?>
 
     <button type="submit" class="btn btn-dark">Confirm Changes</button>
