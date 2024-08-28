@@ -3,6 +3,7 @@ include './database/connection.php';
 global $userDao;
 global $orgDao;
 global $contactDao;
+global $contractorDao;
 
 // get mode from either POST or GET
 if (isset($_GET['mode'])) {
@@ -66,10 +67,24 @@ switch ($mode) {
       header("Location: index.php");
     } else {
       echo "Sorry, there was an error sending your message. Please try again later.";
+      header("Location: index.php");
       exit();
     }
+    break;
 
+  case 'contractor':
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $specialisation = $_POST['specialisation'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
 
+    // insert
+    $contractorDao->insertContractor($firstname, $lastname, $specialisation, $email, $phone, $address);
+    header("Location: contractors.php");
+    exit();
+    break;
 
   default:
     echo "ERROR GET/POST for CRUD must be made with a mode!";

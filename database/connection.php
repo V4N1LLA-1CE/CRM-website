@@ -293,6 +293,27 @@ class ContractorDao
     // Execute the statement
     $stmt->execute();
   }
+
+  public function insertContractor($firstname, $lastname, $specialisation, $email, $phone, $address)
+  {
+    // create sql statement/query
+    $sql = "INSERT INTO Contractor (first_name, last_name, specialisation, email, phone_number, address) 
+            VALUES (:firstname, :lastname, :specialisation, :email, :phone, :address)";
+
+    // prepare statement
+    $stmt = $this->dbh->prepare($sql);
+
+    // Bind the parameters to the SQL query
+    $stmt->bindParam(':firstname', $firstname);
+    $stmt->bindParam(':lastname', $lastname);
+    $stmt->bindParam(':specialisation', $specialisation);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':address', $address);
+
+    // Execute the statement
+    $stmt->execute();
+  }
 }
 
 global $contractorDao;

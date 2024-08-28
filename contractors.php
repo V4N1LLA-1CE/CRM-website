@@ -52,6 +52,58 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       </div>
     </nav>
   </header>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-dark mx-5 py-2 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Contractor +
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Contractor</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-5">
+          <form action="add.php" method="POST">
+
+            <div class="mb-3">
+              <label for="fname" class="form-label">First Name</label>
+              <input type="text" name="firstname" class="form-control" id="fname" required>
+            </div>
+            <div class="mb-3">
+              <label for="lname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lname" required name="lastname">
+            </div>
+            <div class="mb-3">
+              <label for="spec" class="form-label">Specialisation</label>
+              <input type="text" class="form-control" id="spec" name="specialisation" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="tel" pattern="0\d{9}" class="form-control" id="phone" name="phone" placeholder="i.e 0123456789" required>
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+
+            <input type="hidden" name="mode" value="contractor">
+            <button type="submit" class="btn btn-dark">Add Contractor</button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <main class="m-5 px-5 py-3 shadow overflow-auto">
     <h1>Contractors</h1>
