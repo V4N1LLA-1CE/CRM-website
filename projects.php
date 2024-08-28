@@ -54,6 +54,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   </header>
 </body>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark mx-5 py-2 mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add New Project +
+</button>
+
+
 <main class="m-5 px-5 py-3 shadow overflow-auto">
   <h1>Projects</h1>
   <table id="userTable" class="display border">
@@ -124,6 +130,69 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     </tbody>
   </table>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a New Project</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-5">
+        <form action="add.php" method="POST">
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Project Name</label>
+            <input type="text" name="name" class="form-control" id="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <input type="text" class="form-control" id="desc" required name="description">
+          </div>
+          <div class="mb-3">
+            <label for="treq" class="form-label">Technique Required</label>
+            <input type="text" class="form-control" id="treq" name="technique_required" required>
+          </div>
+          <div class="mb-3">
+            <label for="due_date" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="due_date" name="due_date" required>
+          </div>
+          <div class="mb-3">
+            <label for="pmt_link" class="form-label">Project Management Tool Link</label>
+            <input type="url" class="form-control" id="pmt_link" name="pmt_link" required>
+          </div>
+          <div class="mb-3">
+            <label for="org" class="form-label">Organisation</label>
+            <select class="form-select" id="org" name="org_id" required>
+              <option selected disabled>Select Organisation</option>
+
+              <?php foreach ($orgs as $org) { ?>
+                <option value="<?= $org['id'] ?>"><?= ($org['name']) ?></option>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="contractor" class="form-label">Contractor</label>
+            <select class="form-select" id="contractor" name="contractor_id" required>
+              <option selected disabled>Select Organisation</option>
+              <?php foreach ($contractors as $contractor) { ?>
+                <option value="<?= $contractor['id'] ?>"><?= ($contractor['first_name'] . " " . $contractor['last_name']) ?></option>
+              <?php } ?>
+            </select>
+          </div>
+
+
+          <button type="submit" class="btn btn-dark">Add Project</button>
+          <input type="hidden" name="mode" value="project">
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- jquery -->
 <script src="lib/jquery/jquery-3.7.1.min.js"></script>

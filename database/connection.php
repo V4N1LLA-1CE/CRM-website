@@ -365,6 +365,29 @@ class ProjectDao
     $stmt->bindParam(':id', $id);
     $stmt->execute();
   }
+
+  public function insertProject($name, $desc, $technique, $dueDate, $pmt, $org_id, $contractor_id)
+  {
+    $sql = "
+        INSERT INTO Project (name, `desc`, technique_required, due_date, pmt_link, org_id, contractor_id)
+        VALUES (:name, :desc, :technique, :due_date, :pmt, :org_id, :contractor_id)
+    ";
+    $stmt = $this->dbh->prepare($sql);
+
+    // Bind the parameters to the SQL query
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':desc', $desc);
+    $stmt->bindParam(':technique', $technique);
+    $stmt->bindParam(':due_date', $dueDate);
+    $stmt->bindParam(':pmt', $pmt);
+
+    // accept for null values
+    $stmt->bindParam(':org_id', $org_id, PDO::PARAM_INT | PDO::PARAM_NULL);
+    $stmt->bindParam(':contractor_id', $contractor_id, PDO::PARAM_INT | PDO::PARAM_NULL);
+
+    // Execute the statement
+    $stmt->execute();
+  }
 }
 
 global $projectDao;

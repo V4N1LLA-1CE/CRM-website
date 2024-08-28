@@ -86,6 +86,21 @@ switch ($mode) {
     exit();
     break;
 
+  case 'project':
+    $name = $_POST['name'];
+    $desc = $_POST['description'];
+    $technique = $_POST['technique_required'];
+    $dueDate = $_POST['due_date'];
+    $pmt = $_POST['pmt_link'];
+    $org_id = (isset($_POST['org_id']) ? $_POST['org_id'] : NULL);
+    $contractor_id = (isset($_POST['contractor_id']) ? $_POST['contractor_id'] : NULL);
+
+    // insert
+    $projectDao->insertProject($name, $desc, $technique, $dueDate, $pmt, $org_id, $contractor_id);
+    header("Location: projects.php");
+    exit();
+    break;
+
   default:
     echo "ERROR GET/POST for CRUD must be made with a mode!";
     break;

@@ -133,6 +133,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <input type="hidden" value="contact" name="mode" />
             <div class="mb-3">
               <select id="select" class="form-select" name="id2edit">
+                <option selected disabled>Select Contact</option>
+
                 <?php foreach ($contacts as $contact) { ?>
                   <option value="<?= $contact['id'] ?>"><?= ($contact['first_name'] . " " . $contact['last_name']) ?></option>
                 <?php } ?>
