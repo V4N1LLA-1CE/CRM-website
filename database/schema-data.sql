@@ -126,7 +126,7 @@ VALUES
    'Angular, Java, MySQL', 
    '2024-12-01 12:00:00', 
    'https://pmt.greenfuture.com/energy', 
-   2, 6),
+   1, NULL),
   
   ('Global Health Portal', 
    'Developing a portal for global healthcare services and medical research data management.', 
@@ -154,14 +154,14 @@ VALUES
    'R, Shiny, SQL Server', 
    '2024-12-10 09:00:00', 
    'https://pmt.healthquestmedicalgroup.org/analytics', 
-   6, 4),
+   4, 4),
   
   ('Advanced Learning Management System', 
    'Creating an advanced learning management system with adaptive learning technologies.', 
    'React, Python, Django', 
    '2024-11-15 16:00:00', 
    'https://pmt.nextwaveedutech.com/lms', 
-   7, 8),
+   4, NULL),
   
   ('Arts & Culture Event Platform', 
    'Building a platform to manage and promote arts and culture events globally.', 
@@ -182,5 +182,5 @@ VALUES
    'IoT, Python, Azure', 
    '2024-11-10 14:30:00', 
    'https://pmt.metroinnovationsinc.com/smartcity', 
-   10, 2);
+   10, NULL);
 

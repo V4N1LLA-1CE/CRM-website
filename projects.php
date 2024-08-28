@@ -74,9 +74,29 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
       <?php
       include './database/connection.php';
       global $projectDao;
+      global $contractorDao;
+      global $orgDao;
       $projects = $projectDao->getProjects();
+      $contractors = $contractorDao->getContractors();
+      $orgs = $orgDao->getOrgs();
+
+      // hashmap of organisations
+      $orgMap = [];
+      foreach ($orgs as $org) {
+        $orgMap[$org['id']] = $org['name'];
+      }
+
+      // hashmap of contractors
+      $contractorMap = [];
+      foreach ($contractors as $contractor) {
+        $contractorMap[$contractor['id']] = ($contractor['first_name'] . " " . $contractor['last_name']);
+      }
 
       foreach ($projects as $project) {
+        // check if id exists in both project and map
+        $orgName = (isset($project['org_id']) && isset($orgMap[$project['org_id']]) ? $orgMap[$project['org_id']] : "--");
+        $contractorName = (isset($project['contractor_id']) && isset($contractorMap[$project['contractor_id']]) ? $contractorMap[$project['contractor_id']] : "--")
+
       ?>
         <tr>
           <td><?= $project['id']  ?></td>
@@ -85,8 +105,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
           <td><?= $project['technique_required'] ?></td>
           <td><?= $project['due_date'] ?></td>
           <td><?= $project['pmt_link'] ?></td>
-          <td><?= $project['org_id'] ?></td>
-          <td><?= $project['contractor_id'] ?></td>
+          <td><?= $orgName ?></td>
+          <td><?= $contractorName  ?></td>
           <td>
             <div class="d-flex align-items-center gap-2">
               <a href="">
