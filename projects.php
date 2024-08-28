@@ -54,4 +54,68 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
   </header>
 </body>
 
+<main class="m-5 px-5 py-3 shadow overflow-auto">
+  <h1>Projects</h1>
+  <table id="userTable" class="display border">
+    <thead>
+      <tr>
+        <th>Project ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Technique Required</th>
+        <th>Due Date</th>
+        <th>Project Management Tool Link</th>
+        <th>Organisation</th>
+        <th>Contractor</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      include './database/connection.php';
+      global $projectDao;
+      $projects = $projectDao->getProjects();
+
+      foreach ($projects as $project) {
+      ?>
+        <tr>
+          <td><?= $project['id']  ?></td>
+          <td><?= $project['name'] ?></td>
+          <td><?= $project['desc'] ?></td>
+          <td><?= $project['technique_required'] ?></td>
+          <td><?= $project['due_date'] ?></td>
+          <td><?= $project['pmt_link'] ?></td>
+          <td><?= $project['org_id'] ?></td>
+          <td><?= $project['contractor_id'] ?></td>
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <a href="">
+                <button class="btn btn-secondary">
+                  <img src="./assets/img/edit.svg" alt=" edit icon" width="20" />
+                </button>
+              </a>
+              <a href="">
+                <button class="btn btn-danger px-3">X</button>
+              </a>
+            </div>
+          </td>
+        </tr>
+      <?php } ?>
+    </tbody>
+  </table>
+</main>
+
+<!-- jquery -->
+<script src="lib/jquery/jquery-3.7.1.min.js"></script>
+
+<!-- datatables -->
+<script src="lib/datatables/dataTables.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $("#userTable").DataTable();
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </html>

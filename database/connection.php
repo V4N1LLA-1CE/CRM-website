@@ -318,3 +318,28 @@ class ContractorDao
 
 global $contractorDao;
 $contractorDao = new ContractorDao();
+
+
+// create project data access class
+class ProjectDao
+{
+  private $dbh;
+  public function __construct()
+  {
+    global $dbh;
+    $this->dbh = $dbh;
+  }
+
+  public function getProjects()
+  {
+    $sql = "SELECT * FROM Project";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->execute();
+
+    $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $projects;
+  }
+}
+
+global $projectDao;
+$projectDao = new ProjectDao();

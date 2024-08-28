@@ -111,3 +111,76 @@ VALUES
   ('Isabella', 'Anderson', 'DevOps Engineer', 'isabella.anderson@devopsmasters.com', '0490123456', '606 Fir Avenue, Greenfield'),
   ('Liam', 'Clark', 'IT Consultant', 'liam.clark@itconsultingfirm.com', '0501234567', '707 Redwood Boulevard, Seaside');
 
+-- Insert data into the Project table
+INSERT INTO `Project` (`name`, `desc`, `technique_required`, `due_date`, `pmt_link`, `org_id`, `contractor_id`)
+VALUES
+  ('Next-Gen CRM Development', 
+   'Developing a next-gen Customer Relationship Management system using the latest web technologies.', 
+   'ReactJS, Node.js, MongoDB', 
+   '2024-10-15 17:00:00', 
+   'https://pmt.techinnovators.com/crm', 
+   1, 1),
+  
+  ('Green Energy Initiative', 
+   'Creating a platform to monitor and manage green energy sources and usage.', 
+   'Angular, Java, MySQL', 
+   '2024-12-01 12:00:00', 
+   'https://pmt.greenfuture.com/energy', 
+   2, 6),
+  
+  ('Global Health Portal', 
+   'Developing a portal for global healthcare services and medical research data management.', 
+   'Python, Django, PostgreSQL', 
+   '2024-11-20 15:30:00', 
+   'https://pmt.globalhealthservices.org/portal', 
+   3, 4),
+  
+  ('E-Learning Platform Enhancement', 
+   'Enhancing an existing e-learning platform with new features and improved user experience.', 
+   'Vue.js, Laravel, MariaDB', 
+   '2024-09-30 10:00:00', 
+   'https://pmt.edutechsolutions.com/elearning', 
+   4, 3),
+  
+  ('Art Community Hub', 
+   'Building an online community hub for artists to collaborate and share their work.', 
+   'React, Node.js, Firebase', 
+   '2024-10-25 14:00:00', 
+   'https://pmt.artfusioncollective.org/hub', 
+   5, 5),
+  
+  ('Healthcare Analytics Dashboard', 
+   'Developing a dashboard for healthcare analytics and reporting.', 
+   'R, Shiny, SQL Server', 
+   '2024-12-10 09:00:00', 
+   'https://pmt.healthquestmedicalgroup.org/analytics', 
+   6, 4),
+  
+  ('Advanced Learning Management System', 
+   'Creating an advanced learning management system with adaptive learning technologies.', 
+   'React, Python, Django', 
+   '2024-11-15 16:00:00', 
+   'https://pmt.nextwaveedutech.com/lms', 
+   7, 8),
+  
+  ('Arts & Culture Event Platform', 
+   'Building a platform to manage and promote arts and culture events globally.', 
+   'Ruby on Rails, PostgreSQL', 
+   '2024-10-05 13:00:00', 
+   'https://pmt.artshorizonnetwork.org/events', 
+   8, 9),
+  
+  ('Investment Portfolio Management System', 
+   'Developing a system to manage and optimize investment portfolios.', 
+   'Java, Spring Boot, MySQL', 
+   '2024-12-20 11:00:00', 
+   'https://pmt.capitalgrowthpartners.com/portfolio', 
+   9, 7),
+  
+  ('Smart City Infrastructure Project', 
+   'Creating a smart city infrastructure management platform.', 
+   'IoT, Python, Azure', 
+   '2024-11-10 14:30:00', 
+   'https://pmt.metroinnovationsinc.com/smartcity', 
+   10, 2);
+
