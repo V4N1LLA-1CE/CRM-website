@@ -121,11 +121,6 @@ class OrgDAO
 
   public function deleteOrg($id)
   {
-    // delete contact-us messages and projects
-    // Delete associated contact-us messages
-    $contactStmt = $this->dbh->prepare("DELETE FROM Contact_Us WHERE org_id = :id");
-    $contactStmt->bindParam(':id', $id);
-    $contactStmt->execute();
 
     // delete org
     $stmt = $this->dbh->prepare("DELETE FROM Organisation WHERE id = :id");
@@ -234,6 +229,13 @@ class ContactDao
       $stmt->execute();
     }
   }
+
+  public function deleteAssociatedData($org_id)
+  {
+    $stmt = $this->dbh->prepare("DELETE FROM Contact_Us WHERE org_id = :id");
+    $stmt->bindParam(':id', $org_id);
+    $stmt->execute();
+  }
 }
 
 global $contactDao;
@@ -338,6 +340,23 @@ class ProjectDao
 
     $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $projects;
+  }
+
+  public function deleteAssociatedProject($org_id)
+  {
+    $sql = "DELETE FROM Project WHERE org_id = :org_id";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindParam(':org_id', $org_id, PDO::PARAM_INT);
+    $stmt->execute();
+  }
+
+  public function deleteContractorData($id)
+  {
+    // find projects that have contractor_id of $id and set these contractor_id fields to NULL
+    $sql = "UPDATE Project SET contractor_id = NULL WHERE contractor_id = :id";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
   }
 }
 
