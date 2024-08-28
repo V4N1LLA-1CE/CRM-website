@@ -358,6 +358,13 @@ class ProjectDao
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
   }
+
+  public function deleteProject($id)
+  {
+    $stmt = $this->dbh->prepare("DELETE FROM Project WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+  }
 }
 
 global $projectDao;

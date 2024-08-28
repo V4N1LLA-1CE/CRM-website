@@ -18,10 +18,10 @@ switch ($mode) {
 
   case 'org':
     // When a organisation is deleted, the associated project and contact us messages should be deleted.
-    // Delete associated contact-us messages
+    // Delete contact-us messages associated to this organisation
     $contactDao->deleteAssociatedData($id);
 
-    // Delete associated project
+    // Delete associated project to this organisation
     $projectDao->deleteAssociatedProject($id);
 
     // Delete organisation
@@ -38,11 +38,20 @@ switch ($mode) {
 
   case 'contractor':
     // When a contractor is deleted, the associated projects do not get deleted, the contractor field could be blank.
-    // Delete contractor from the associated projects before deleting contractor
+    // Delete contractor field from the associated projects before deleting contractor
     $projectDao->deleteContractorData($id);
 
     $contractorDao->deleteContractor($id);
     header("Location: contractors.php");
+    exit();
+    break;
+
+  case 'project':
+    // When a project is deleted, the related organisation don't get deleted, but this project will be deleted from the contractor.     
+
+    // Delete project
+    $projectDao->deleteProject($id);
+    header("Location: projects.php");
     exit();
     break;
 
